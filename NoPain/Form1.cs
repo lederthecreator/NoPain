@@ -3,6 +3,7 @@ namespace NoPain
     public partial class Form1 : Form
     {
         private Painter p;
+        private TextBox textBox;
         public Form1()
         {
             InitializeComponent();
@@ -69,6 +70,9 @@ namespace NoPain
 
         #endregion
 
+
+
+
         private void pic_MouseDown(object sender, MouseEventArgs e)
         {
             p.MainColor = mainClrButton.BackColor;
@@ -76,6 +80,8 @@ namespace NoPain
             p.PenWidth = trackBar1.Value;
             p.PainterMouseDown(e.Location, pic.Image);
         }
+
+
 
         private void pic_MouseMove(object sender, MouseEventArgs e)
         {
@@ -85,8 +91,24 @@ namespace NoPain
 
         private void pic_MouseUp(object sender, MouseEventArgs e)
         {
-            p.PainterMouseUp();
+            p.PainterMouseUp(ModifierKeys == Keys.Shift);
             mainClrButton.BackColor = p.MainColor;
+
+            if(p.Instrument == 4)
+            {
+                textBox = new TextBox();
+                textBox.Location = new Point (p.rec.Location.X + pic.Location.X, p.rec.Location.Y + pic.Location.Y);
+                textBox.Name = "textBox";
+                textBox.Size = new Size(p.CCS.X, 22);
+                textBox.KeyPress += TextBox_KeyPress;
+                Controls.Add(textBox);
+                textBox.BringToFront();
+            }
+        }
+
+        private void TextBox_KeyPress(object? sender, KeyPressEventArgs e)
+        {
+            
         }
 
         private void button2_MouseUp(object sender, MouseEventArgs e)
@@ -115,7 +137,7 @@ namespace NoPain
 
         private void pic_Paint(object sender, PaintEventArgs e)
         {
-            p.PainterPaint(e.Graphics);
+            p.PainterPaint(e.Graphics, ModifierKeys == Keys.Shift);
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -131,6 +153,14 @@ namespace NoPain
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             p.isFillChecked = checkBox1.Checked;
+        }
+
+        private void pic_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(p.Instrument == 5)
+            {
+                p.Fill(e.Location, p.bm);
+            }
         }
     }
 }

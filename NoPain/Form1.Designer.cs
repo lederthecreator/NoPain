@@ -73,12 +73,12 @@ namespace NoPain
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btn_clear = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.pic = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
@@ -569,6 +569,18 @@ namespace NoPain
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar1.Value = 5;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(203, 6);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(133, 24);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Fill by BG Color";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // btn_clear
             // 
             this.btn_clear.Location = new System.Drawing.Point(342, 3);
@@ -593,21 +605,10 @@ namespace NoPain
             this.pic.TabIndex = 4;
             this.pic.TabStop = false;
             this.pic.Paint += new System.Windows.Forms.PaintEventHandler(this.pic_Paint);
+            this.pic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pic_MouseClick);
             this.pic.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pic_MouseDown);
             this.pic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pic_MouseMove);
             this.pic.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pic_MouseUp);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(203, 6);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(133, 24);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Fill by BG Color";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form1
             // 
