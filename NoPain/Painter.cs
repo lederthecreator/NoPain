@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace NoPain
         public int Instrument;
         public Rectangle rec, rec_shift;
         private double alpha; // sheeeeeeeeeeeeeeeeesh - Sin угла наклона линии
-        private string text;
+        private string text, filename;
 
         public Bitmap? bm;
         public Graphics? g;
@@ -391,6 +392,59 @@ namespace NoPain
                     EndPoint.X = StartPoint.X;
                 }
             }
+        }
+
+        public void TextEventHandler(Form1 form, char e, TextBox textbox)
+        {
+            if(e == (char)13)
+            {
+                text = textbox.Text;
+                var br = new SolidBrush(MainColor);
+                g.DrawString(text, new Font("Robotica", textbox.Font.Size + 2,  FontStyle.Regular), br, rec.Location);
+                form.Controls.Remove(textbox);
+            }
+        }
+
+        public void SaveAs(SaveFileDialog sfd, Image img)
+        {
+            sfd.Filter = "Image (*.jpg) | *.jpg  | Image (*.png) | *.png";
+            if(sfd.ShowDialog() == DialogResult.OK)
+            {
+                filename = sfd.FileName;
+                Bitmap btm = bm.Clone(new Rectangle(0, 0, bm.Width, bm.Height), bm.PixelFormat);
+                btm.Save(filename);
+            }
+
+        }
+
+        public void Save()
+        {
+            if (!string.IsNullOrEmpty(filename))
+            {
+                Bitmap btm = bm.Clone(new Rectangle(0, 0, bm.Width, bm.Height), bm.PixelFormat);
+                btm.Save(filename);
+            }
+        }
+
+        public void Open(PictureBox pic, OpenFileDialog ofd)
+        {
+            ofd.Filter = "Image (*.jpg)|*.jpg|Image (*.png)|*.png";
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                pic.Image = Image.FromFile(ofd.FileName);
+            }
+            RefreshPainter(pic);
+        }
+
+        public void RefreshPainter(PictureBox pic)
+        {
+            var bmtmp = new Bitmap(pic.Width, pic.Height);
+            
+            var ig = Graphics.FromImage(bmtmp);
+            ig.DrawImage(bm, new Point(0, 0));
+            bm = (Bitmap)bmtmp.Clone();
+            g = Graphics.FromImage(bm);
+            bmtmp.Dispose();
         }
 
     }

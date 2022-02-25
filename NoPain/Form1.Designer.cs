@@ -107,18 +107,21 @@ namespace NoPain
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(59, 24);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.saveToolStripMenuItem_MouseDown);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.saveAsToolStripMenuItem_MouseDown);
             // 
             // panel1
             // 
@@ -625,6 +628,8 @@ namespace NoPain
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "скажи мне сын что ты курил";
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

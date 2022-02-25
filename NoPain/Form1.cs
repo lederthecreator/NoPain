@@ -4,6 +4,7 @@ namespace NoPain
     {
         private Painter p;
         private TextBox textBox;
+        private string filename = "";
         public Form1()
         {
             InitializeComponent();
@@ -94,10 +95,10 @@ namespace NoPain
             p.PainterMouseUp(ModifierKeys == Keys.Shift);
             mainClrButton.BackColor = p.MainColor;
 
-            if(p.Instrument == 4)
+            if (p.Instrument == 4)
             {
                 textBox = new TextBox();
-                textBox.Location = new Point (p.rec.Location.X + pic.Location.X, p.rec.Location.Y + pic.Location.Y);
+                textBox.Location = new Point(p.rec.Location.X + pic.Location.X, p.rec.Location.Y + pic.Location.Y);
                 textBox.Name = "textBox";
                 textBox.Size = new Size(p.CCS.X, 22);
                 textBox.KeyPress += TextBox_KeyPress;
@@ -108,7 +109,7 @@ namespace NoPain
 
         private void TextBox_KeyPress(object? sender, KeyPressEventArgs e)
         {
-            
+            p.TextEventHandler(this, e.KeyChar, textBox);
         }
 
         private void button2_MouseUp(object sender, MouseEventArgs e)
@@ -129,7 +130,7 @@ namespace NoPain
 
         private void btn_palette_Click(object sender, EventArgs e)
         {
-            if(colorDialog1.ShowDialog() == DialogResult.OK)
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 btn_palette_pick.BackColor = colorDialog1.Color;
             }
@@ -157,10 +158,51 @@ namespace NoPain
 
         private void pic_MouseClick(object sender, MouseEventArgs e)
         {
-            if(p.Instrument == 5)
+            if (p.Instrument == 5)
             {
                 p.Fill(e.Location, p.bm);
             }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (p.Instrument == 4) return;
+            switch (e.KeyCode)
+            {
+                case Keys.X:
+                    var tmp = mainClrButton.BackColor;
+                    mainClrButton.BackColor = backClrButton.BackColor;
+                    backClrButton.BackColor = tmp;
+                    break;
+                case Keys.D:
+                    mainClrButton.BackColor = Color.Black;
+                    backClrButton.BackColor = Color.White;
+                    break;
+            }
+        }
+
+        private void saveAsToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            p.SaveAs(saveFileDialog1, pic.Image);
+        }
+
+        private void saveToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            p.Save();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            p.Open(pic, openFileDialog1);
+            p.g = Graphics.FromImage(pic.Image);
+            pic.Refresh();
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            p.RefreshPainter(pic);
+            pic.Image = p.bm;
+            pic.Refresh();
         }
     }
 }
