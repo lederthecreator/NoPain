@@ -143,6 +143,16 @@ namespace NoPain.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngegg__1_ {
+            get {
+                object obj = ResourceManager.GetObject("pngegg (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rectangle_outline_pngrepo_com {
             get {
                 object obj = ResourceManager.GetObject("rectangle-outline-pngrepo-com", resourceCulture);

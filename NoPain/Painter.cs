@@ -182,6 +182,18 @@ namespace NoPain
                         g.DrawLine(Pen, StartPoint, EndPoint);
                     }
                     break;
+                case 10:
+                    Point perp1 = new Point(StartPoint.X, EndPoint.Y);
+                    alpha = Math.Sin(Math.Abs(Distance(StartPoint, perp1) / Distance(StartPoint, EndPoint)));
+                    CreateHexagonLine();
+                    Hegaxon hx = new Hegaxon(StartPoint, EndPoint);
+                    if (isFillChecked)
+                    {
+                        var br = new SolidBrush(BackGroundColor);
+                        g.FillPolygon(br, hx.Points);
+                    }
+                    g.DrawPolygon(Pen, hx.Points);
+                    break;
 
             }
             
@@ -200,6 +212,7 @@ namespace NoPain
                             CCS.Y > 0 ? StartPoint.Y - CCS.Y : StartPoint.Y,
                             Math.Abs(CCS.X), Math.Abs(CCS.Y));
                         rec.Height = 22;
+                        Pen.Width = 2;
                         pg.DrawRectangle(Pen, rec);
                         break;
                     case 5:
@@ -256,7 +269,13 @@ namespace NoPain
                             pg.DrawLine(Pen, StartPoint, EndPoint);
                         }
                         break;
-
+                    case 10:
+                        Point perp1 = new Point(StartPoint.X, EndPoint.Y);
+                        alpha = Math.Sin(Math.Abs(Distance(StartPoint, perp1) / Distance(StartPoint, EndPoint)));
+                        CreateHexagonLine();
+                        Hegaxon hx = new Hegaxon(StartPoint, EndPoint);
+                        pg.DrawPolygon(Pen, hx.Points);
+                        break;
                 }
             }
         }
@@ -287,13 +306,13 @@ namespace NoPain
                 if(cur_pt.X > 0 && cur_pt.Y > 0 && cur_pt.X < bm.Width - 1 && cur_pt.Y < bm.Height - 1)
                 {
                     Validate_Pix(new Point(cur_pt.X, cur_pt.Y + 1), bm, stack, MainColor, old_color); // выше
-                    Validate_Pix(new Point(cur_pt.X + 1, cur_pt.Y + 1), bm, stack, MainColor, old_color); // выше правее
+                    //Validate_Pix(new Point(cur_pt.X + 1, cur_pt.Y + 1), bm, stack, MainColor, old_color); // выше правее
                     Validate_Pix(new Point(cur_pt.X + 1, cur_pt.Y), bm, stack, MainColor, old_color); // правее
-                    Validate_Pix(new Point(cur_pt.X + 1, cur_pt.Y - 1), bm, stack, MainColor, old_color); // правее ниже
+                    //Validate_Pix(new Point(cur_pt.X + 1, cur_pt.Y - 1), bm, stack, MainColor, old_color); // правее ниже
                     Validate_Pix(new Point(cur_pt.X, cur_pt.Y - 1), bm, stack, MainColor, old_color); // ниже
-                    Validate_Pix(new Point(cur_pt.X - 1, cur_pt.Y - 1), bm, stack, MainColor, old_color); // левее ниже
+                    //Validate_Pix(new Point(cur_pt.X - 1, cur_pt.Y - 1), bm, stack, MainColor, old_color); // левее ниже
                     Validate_Pix(new Point(cur_pt.X - 1, cur_pt.Y), bm, stack, MainColor, old_color); // левее
-                    Validate_Pix(new Point(cur_pt.X - 1, cur_pt.Y + 1), bm, stack, MainColor, old_color); // выше левее
+                    //Validate_Pix(new Point(cur_pt.X - 1, cur_pt.Y + 1), bm, stack, MainColor, old_color); // выше левее
                 }
             }
 
@@ -314,7 +333,7 @@ namespace NoPain
             Instrument = 0;
         }
 
-        private double Distance(Point a, Point b)
+        public static double Distance(Point a, Point b)
         {
             return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
         }
@@ -394,6 +413,63 @@ namespace NoPain
             }
         }
 
+        /// <summary>
+        /// То же самое что и метод для Shift, только по направлениям осей ( - => | => - => | => -)
+        /// </summary>
+        private void CreateHexagonLine()
+        {
+            int AC = (int)Distance(EndPoint, StartPoint);
+            double Sin45 = Math.Sin(Math.PI / 4);
+            // I quarter
+            if(CCS.X > 0 && CCS.Y > 0)
+            {
+                if (alpha >= 0 && alpha <= 0.7)
+                {
+                    EndPoint.Y = StartPoint.Y;
+                }
+                if (alpha > 0.7 && alpha <= 1)
+                {
+                    EndPoint.X = StartPoint.X;
+                }
+            }
+            // II quarter
+            if(CCS.X < 0 && CCS.Y > 0)
+            {
+                if (alpha >= 0 && alpha <= 0.7)
+                {
+                    EndPoint.Y = StartPoint.Y;
+                }
+                if (alpha > 0.7 && alpha <= 1)
+                {
+                    EndPoint.X = StartPoint.X;
+                }
+            }
+            // III quarter
+            if(CCS.X < 0 && CCS.Y < 0)
+            {
+                if (alpha >= 0 && alpha <= 0.7)
+                {
+                    EndPoint.Y = StartPoint.Y;
+                }
+                if (alpha > 0.7 && alpha <= 1)
+                {
+                    EndPoint.X = StartPoint.X;
+                }
+            }
+            // IV quarter
+            if(CCS.X > 0 && CCS.Y < 0)
+            {
+                if (alpha >= 0 && alpha <= 0.7)
+                {
+                    EndPoint.Y = StartPoint.Y;
+                }
+                if (alpha > 0.7 && alpha <= 1)
+                {
+                    EndPoint.X = StartPoint.X;
+                }
+            }
+        }
+
         public void TextEventHandler(Form1 form, char e, TextBox textbox)
         {
             if(e == (char)13)
@@ -411,17 +487,17 @@ namespace NoPain
             if(sfd.ShowDialog() == DialogResult.OK)
             {
                 filename = sfd.FileName;
-                Bitmap btm = bm.Clone(new Rectangle(0, 0, bm.Width, bm.Height), bm.PixelFormat);
+                Bitmap btm = bm.Clone(new Rectangle(0, 0, (int)g.VisibleClipBounds.Width, (int)g.VisibleClipBounds.Height), bm.PixelFormat);
                 btm.Save(filename);
             }
 
         }
 
-        public void Save()
+        public void Save(PictureBox pic)
         {
             if (!string.IsNullOrEmpty(filename))
             {
-                Bitmap btm = bm.Clone(new Rectangle(0, 0, bm.Width, bm.Height), bm.PixelFormat);
+                Bitmap btm = bm.Clone(new Rectangle(0, 0, pic.Width, pic.Height), bm.PixelFormat);
                 btm.Save(filename);
             }
         }
@@ -431,7 +507,9 @@ namespace NoPain
             ofd.Filter = "Image (*.jpg)|*.jpg|Image (*.png)|*.png";
             if(ofd.ShowDialog() == DialogResult.OK)
             {
-                pic.Image = Image.FromFile(ofd.FileName);
+                //pic.Image = Image.FromFile(ofd.FileName);
+                var img_loaded = Image.FromFile(ofd.FileName);
+                g.DrawImage(img_loaded, 0, 0);
             }
             RefreshPainter(pic);
         }

@@ -121,17 +121,11 @@
   <data name="brush-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\brush-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bucket-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bucket-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="circle-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\circle-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rectangle-outline-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rectangle-outline-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="color-palette-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\color-palette-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eraser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eraser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="line-alt-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\line-alt-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,16 +133,25 @@
   <data name="pencil-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pencil-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pipette-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pipette-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bucket-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bucket-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rectangle-outline-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rectangle-outline-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="circle-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circle-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="text" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="top-right-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\top-right-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pipette-pngrepo-com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pipette-pngrepo-com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eraser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eraser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngegg (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngegg (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

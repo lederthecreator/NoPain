@@ -41,7 +41,7 @@ namespace NoPain
             this.btn_ellipse = new System.Windows.Forms.Button();
             this.btn_rectangle = new System.Windows.Forms.Button();
             this.btn_arrow = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
+            this.btn_hexagon = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_pencil = new System.Windows.Forms.Button();
@@ -151,7 +151,7 @@ namespace NoPain
             this.flowLayoutPanel4.Controls.Add(this.btn_ellipse);
             this.flowLayoutPanel4.Controls.Add(this.btn_rectangle);
             this.flowLayoutPanel4.Controls.Add(this.btn_arrow);
-            this.flowLayoutPanel4.Controls.Add(this.button25);
+            this.flowLayoutPanel4.Controls.Add(this.btn_hexagon);
             this.flowLayoutPanel4.Controls.Add(this.button26);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 344);
@@ -209,13 +209,17 @@ namespace NoPain
             this.btn_arrow.UseVisualStyleBackColor = false;
             this.btn_arrow.Click += new System.EventHandler(this.btn_arrow_Click);
             // 
-            // button25
+            // btn_hexagon
             // 
-            this.button25.Location = new System.Drawing.Point(86, 69);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(60, 60);
-            this.button25.TabIndex = 4;
-            this.button25.UseVisualStyleBackColor = true;
+            this.btn_hexagon.BackColor = System.Drawing.Color.Transparent;
+            this.btn_hexagon.BackgroundImage = global::NoPain.Properties.Resources.pngegg__1_;
+            this.btn_hexagon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_hexagon.Location = new System.Drawing.Point(86, 69);
+            this.btn_hexagon.Name = "btn_hexagon";
+            this.btn_hexagon.Size = new System.Drawing.Size(60, 60);
+            this.btn_hexagon.TabIndex = 4;
+            this.btn_hexagon.UseVisualStyleBackColor = false;
+            this.btn_hexagon.Click += new System.EventHandler(this.btn_hexagon_Click);
             // 
             // button26
             // 
@@ -661,7 +665,7 @@ namespace NoPain
         private Button btn_ellipse;
         private Button btn_rectangle;
         private Button btn_arrow;
-        private Button button25;
+        private Button btn_hexagon;
         private Button button26;
         private FlowLayoutPanel flowLayoutPanel3;
         private Button btn_pencil;

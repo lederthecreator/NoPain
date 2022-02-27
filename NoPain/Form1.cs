@@ -16,12 +16,12 @@ namespace NoPain
 
         /// <summary>
         /// Выбор инструментов 1 - Brush/Pencil, 2 - Eraser, 3 - Pipette, 4 - Text
-        /// 5 - Fill, 6 - Line, 7 - Ellipse, 8 - Rectangle, 9 - ArrowLine
+        /// 5 - Fill, 6 - Line, 7 - Ellipse, 8 - Rectangle, 9 - ArrowLine, 10 - Hexagon
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        #region Peek
+        #region Selection
         private void btn_pencil_Click(object sender, EventArgs e)
         {
             p.Instrument = 1;
@@ -65,6 +65,11 @@ namespace NoPain
         private void btn_arrow_Click(object sender, EventArgs e)
         {
             p.Instrument = 9;
+        }
+
+        private void btn_hexagon_Click(object sender, EventArgs e)
+        {
+            p.Instrument = 10;
         }
 
 
@@ -188,7 +193,7 @@ namespace NoPain
 
         private void saveToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
         {
-            p.Save();
+            p.Save(pic);
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -204,5 +209,7 @@ namespace NoPain
             pic.Image = p.bm;
             pic.Refresh();
         }
+
+
     }
 }
