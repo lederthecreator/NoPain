@@ -519,6 +519,7 @@ namespace NoPain
             var bmtmp = new Bitmap(pic.Width, pic.Height);
             
             var ig = Graphics.FromImage(bmtmp);
+            ig.Clear(Color.White);
             ig.DrawImage(bm, new Point(0, 0));
             bm = (Bitmap)bmtmp.Clone();
             g = Graphics.FromImage(bm);

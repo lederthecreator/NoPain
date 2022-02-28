@@ -213,3 +213,7 @@ namespace NoPain
 
     }
 }
+
+//TODO: CTRL+Z 
+//TODO: Разбивка по классам, отдельный класс для сохранения
+//TODO: Не передавать PictureBox в функции Painter'а
